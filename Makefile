@@ -26,10 +26,12 @@ GOPROXY=direct
 .PHONY: aws-ebs-csi-driver
 aws-ebs-csi-driver:
 	mkdir -p bin
-	go get -u "github.com/kubernetes-sigs/aws-ebs-csi-driver/pkg/driver"
-	go get -u "k8s.io/kubernetes/pkg/util/mount"
-	go get -u "k8s.io/kubernetes/pkg/util/resizefs"
-	go get -u "k8s.io/klog"
+	go get "github.com/kubernetes-sigs/aws-ebs-csi-driver/pkg/driver"
+	go get "k8s.io/kubernetes/pkg/util/mount"
+	go get "k8s.io/kubernetes/pkg/util/resizefs"
+	go get  "k8s.io/klog"
+	go get "github.com/golang/protobuf"
+	go get "gonum.org/v1/gonum"
 	CGO_ENABLED=0 GOOS=linux go build -v -gcflags "-N -l" -ldflags ${LDFLAGS}  -o  bin/aws-ebs-csi-driver ./cmd/
 
 .PHONY: verify
